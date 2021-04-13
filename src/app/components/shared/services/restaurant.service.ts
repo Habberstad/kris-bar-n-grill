@@ -1,27 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MenuItem } from '../interfaces/menu';
+import { MenuItem, MenuItemBase } from '../interfaces/menu';
 import { Restaurant } from '../interfaces/restaurant';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RestaurantService {
-base_url = 'http://localhost:3000/api/'
+  base_url = 'http://localhost:3000/api/';
 
-constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-getRestaurant() {
-  return this.http.get<Restaurant>(`${this.base_url}restaurant`)
-}
+  getRestaurant() {
+    return this.http.get<Restaurant>(`${this.base_url}restaurant`);
+  }
 
-getMenu(){
-  return this.http.get<MenuItem[]>(`${this.base_url}menu`)
-}
+  getMenu() {
+    return this.http.get<MenuItem[]>(`${this.base_url}menu`);
+  }
 
-getMenuItem(id) {
-  return this.http.get<MenuItem>(`${this.base_url}menu/`+id)
-}
+  getMenuItem(id) {
+    return this.http.get<MenuItem>(`${this.base_url}menu/` + id);
+  }
 
+  postMenuItem(model: MenuItemBase) {
+    return this.http.post<MenuItem>(`${this.base_url}menu/item`, model);
+  }
+
+  deleteMenuItem(id: string) {
+    return this.http.delete<MenuItem>(`${this.base_url}menu/item/${id}`);
+  }
 }

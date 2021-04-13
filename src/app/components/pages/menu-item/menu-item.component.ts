@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MenuItem } from '../../shared/interfaces/menu';
 import { RestaurantService } from './../../shared/services/restaurant.service';
@@ -17,6 +17,7 @@ export class MenuItemComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private service: RestaurantService
   ) {}
 
@@ -47,6 +48,12 @@ export class MenuItemComponent implements OnInit, OnDestroy {
   fetchMenuItem() {
     this.service.getMenuItem(this.menuItemId).subscribe((res) => {
       this.menuItem = res;
+    });
+  }
+
+  handleDeleteItem() {
+    this.service.deleteMenuItem(this.menuItemId).subscribe((res) => {
+      this.router.navigate(['/menu']);
     });
   }
 }

@@ -4,6 +4,8 @@
 			<h2 class="display-5"> {{menuItem.name}} </h2>
 			<h5 class="">Price: {{menuItem.price}}</h5>
 			<p class="lead">{{ menuItem.description}}</p>
+			<button class="btn btn-danger"
+					(click)="handleDeleteItem()">Delete this item</button>
 		</div>
 		<div class="bg-dark shadow-sm mx-auto"
 			 style="width: 80%; height: 100%; border-radius: 21px 21px 0 0;">

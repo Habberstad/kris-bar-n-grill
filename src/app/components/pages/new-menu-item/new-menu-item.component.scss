@@ -1,0 +1,7 @@
+.ng-invalid:not(.ng-untouched) {
+  border-color: red;
+}
+
+.ng-valid {
+  border-color: green;
+}
