@@ -10,15 +10,7 @@ import { RestaurantService } from '../../services/restaurant.service';
 export class RecommendationBarComponent implements OnInit {
   @Input() menu: MenuItem[] = [];
 
-  constructor(private service: RestaurantService) {}
+  constructor() {}
 
-  ngOnInit() {
-    //this.fetchMenu();
-  }
-
-  fetchMenu() {
-    this.service.getMenu().subscribe((res) => {
-      for (let index = 0; index <= 2; index++) this.menu.push(res[index]);
-    });
-  }
+  ngOnInit() {}
 }

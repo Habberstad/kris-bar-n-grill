@@ -7,13 +7,11 @@ import { MenuModule } from './components/pages/menu';
 import { MenuItemModule } from './components/pages/menu-item';
 import { RestaurantModule } from './components/pages/restaurant';
 import { NavigationModule } from './components/shared/components/navigation/index';
-import { HttpClientModule } from '@angular/common/http'
-
+import { HttpClientModule } from '@angular/common/http';
+import { NewMenuItemModule } from './components/pages/new-menu-item';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,9 +19,10 @@ import { HttpClientModule } from '@angular/common/http'
     MenuModule,
     MenuItemModule,
     RestaurantModule,
-    NavigationModule
+    NavigationModule,
+    NewMenuItemModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

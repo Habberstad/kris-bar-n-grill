@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { MenuItem } from '../../shared/interfaces/menu';
 import { RestaurantService } from './../../shared/services/restaurant.service';
 
@@ -8,10 +9,11 @@ import { RestaurantService } from './../../shared/services/restaurant.service';
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss'],
 })
-export class MenuItemComponent implements OnInit {
+export class MenuItemComponent implements OnInit, OnDestroy {
   menuItemId: string;
   menuItem: MenuItem;
   recommendationBarMenu: MenuItem[] = [];
+  routeParamSubscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +26,12 @@ export class MenuItemComponent implements OnInit {
     this.fetchMenuItem();
   }
 
+  ngOnDestroy() {
+    this.routeParamSubscription.unsubscribe();
+  }
+
   getMenuItemIdFromRouteParam() {
-    this.route.params.subscribe((res) => {
+    this.routeParamSubscription = this.route.params.subscribe((res) => {
       this.menuItemId = res.id;
       this.fetchMenuItem();
     });

@@ -1,3 +1,4 @@
+import { NewMenuItemComponent } from './components/pages/new-menu-item/new-menu-item.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuItemComponent } from './components/pages/menu-item/menu-item.component';
@@ -7,7 +8,7 @@ import { RestaurantComponent } from './components/pages/restaurant/restaurant.co
 const routes: Routes = [
   {
     path: 'restaurant',
-    component: RestaurantComponent
+    component: RestaurantComponent,
   },
   {
     path: 'menu',
@@ -17,20 +18,25 @@ const routes: Routes = [
         component: MenuComponent,
       },
       {
+        path: 'new',
+        component: NewMenuItemComponent,
+      },
+      {
         path: ':id',
         component: MenuItemComponent,
+        pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
     redirectTo: 'restaurant',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
