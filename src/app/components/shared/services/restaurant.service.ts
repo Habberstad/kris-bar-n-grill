@@ -20,4 +20,8 @@ getMenu(){
   return this.http.get<MenuItem[]>(`${this.base_url}menu`)
 }
 
+getMenuItem(id) {
+  return this.http.get<MenuItem>(`${this.base_url}menu/`+id)
+}
+
 }

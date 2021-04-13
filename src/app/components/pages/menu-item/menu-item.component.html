@@ -1,2 +1,15 @@
 
-<h1>{{ menuItemId }}</h1>
+<ng-container *ngIf="menuItem">
+  <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div class="my-3 py-3">
+      <h2 class="display-5"> {{menuItem.name}} </h2>
+      <h5 class="">Price: {{menuItem.price}}</h5>
+      <p class="lead">{{ menuItem.description}}</p>
+    </div>
+    <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 100%; border-radius: 21px 21px 0 0;">
+      <img class="img-fluid" [src]="menuItem.img">
+    </div>
+  </div>
+  <h3 class="m-5">Our customers also love</h3>
+  <recommendation-bar></recommendation-bar>
+</ng-container>
